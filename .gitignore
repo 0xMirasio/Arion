@@ -1,11 +1,17 @@
+#cmake build files
 build/
 build.dev/
 build.release/
-.cache/
-.idea/
 cmake-build-release/
 cmake-build-debug/
+
+#misc
+.gdb_history
 lab/
 compile_commands.json
+.cache/
+.idea/
+
+#rust build files
 target/
-.gdb_history
+Cargo.lock
