@@ -7,3 +7,5 @@ cmake-build-release/
 cmake-build-debug/
 lab/
 compile_commands.json
+target/
+.gdb_history

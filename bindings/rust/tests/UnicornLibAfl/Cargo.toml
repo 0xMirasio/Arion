@@ -1,0 +1,11 @@
+[package]
+name = "hello_world_unicorn"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libafl = { git = "https://github.com/AFLplusplus/LibAFL.git", version = "0.15.1"}
+libafl_unicorn = { git = "https://github.com/AFLplusplus/LibAFL.git", version = "0.15.1" }
+libafl_bolts = { git = "https://github.com/AFLplusplus/LibAFL.git", version = "0.15.1" }
+libafl_targets = { git = "https://github.com/AFLplusplus/LibAFL.git", version = "0.15.1" }
+unicorn-engine = "2.1.3"
