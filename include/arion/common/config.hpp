@@ -2,7 +2,11 @@
 #define ARION_CONFIG_HPP
 
 #include <arion/common/global_defs.hpp>
+#include "arion/common/global_excepts.hpp"
 #include <any>
+#include <map>
+#include <string>
+#include <memory>
 
 class ARION_EXPORT Config {
 private:
@@ -38,5 +42,9 @@ public:
         return newConfig;
     }
 };
+
+// rust bindings getter and setter
+std::unique_ptr<Config> new_config();
+arion::ARION_LOG_LEVEL get_log_level();
 
 #endif // ARION_CONFIG_HPP

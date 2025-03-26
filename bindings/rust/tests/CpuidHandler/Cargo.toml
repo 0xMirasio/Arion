@@ -1,0 +1,8 @@
+[package]
+name = "ArionEngine"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+arion_engine = {path = "../../arion_engine"}

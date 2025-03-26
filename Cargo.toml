@@ -1,0 +1,19 @@
+[package]
+name = "arion_engine"
+version = "1.0.0"
+edition = "2024"
+readme = "README.md"
+description="rust binding"
+build = "./build.rs"
+publish = false
+
+[lib]
+path = "bindings/src/lib.rs"
+
+[dependencies]
+libc = "0.2.171"
+cxx = "1.0"
+
+[build-dependencies]
+cxx-build = "1.0"
+walkdir = "2"

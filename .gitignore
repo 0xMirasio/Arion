@@ -11,6 +11,7 @@ lab/
 compile_commands.json
 .cache/
 .idea/
+*.dev.sh
 
 #rust build files
 target/
