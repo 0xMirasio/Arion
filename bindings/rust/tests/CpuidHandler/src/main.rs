@@ -4,6 +4,9 @@ use arion_engine::common::config;
 fn main() {
     println!("Arion Debug level -> {:?}", ARION_LOG_LEVEL::DEBUG as i32);
     let config = config::new_config();
-    println!("config -> {:p}", config.get_field("log_lvl"));
+
+    //let is_sleep_enabled = config.is_enable_sleep_syscalls();
+    //println!("config -> {}", is_sleep_enabled);
+
 
 }

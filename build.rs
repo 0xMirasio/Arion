@@ -27,16 +27,23 @@ fn main() {
         .include("lib/lief/build/include")
         .define("ARION_ONLY", Some("1"))
         .flag_if_supported("-std=c++17")
-        .flag("-Wno-reorder");
-
-    
+        .flag("-Wno-reorder")
+        .flag("-Wno-unused-parameter")
+        .flag("-Wno-missing-field-initializers")
+        .flag("-Wno-redundant-move")
+        .flag("-Wno-sign-compare")
+        .flag("-Wno-unused-variable")
+        .flag("-Wno-pessimizing-move")
+        .flag("-Wno-catch-value")
+        .flag("-Wno-maybe-uninitialized")
+        .flag("-Wno-restrict");
 
     for entry in WalkDir::new("src") {
         let entry = entry.unwrap();
         let path = entry.path();
     
         if path.extension().map_or(false, |ext| ext == "cpp") {
-            println!("cargo:rerun-if-changed={}", path.display());
+            build.file(&path);
         }
     }     
 
@@ -48,12 +55,7 @@ fn main() {
     println!("cargo:rustc-link-lib=capstone");
     println!("cargo:rustc-link-lib=LIEF");
     println!("cargo:rustc-link-lib=spdlog");
-
-    println!("cargo:rustc-link-search=native=lib/unicorn");
-    println!("cargo:rustc-link-search=native=lib/capstone");
-    println!("cargo:rustc-link-search=native=lib/keystone");
-    println!("cargo:rustc-link-search=native=lib/lief");
-    println!("cargo:rustc-link-search=native=lib/spdlog");
+    println!("cargo:rustc-link-lib=arion");
 
     watch_files_with_ext("src", "cpp");
     watch_files_with_ext("bindings/rust/src", "rs");

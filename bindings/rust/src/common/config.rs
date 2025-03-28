@@ -5,7 +5,14 @@ pub mod ffi {
 
         type Config;
         pub fn new_config() -> UniquePtr<Config>;
-        pub fn get_log_level(self: &Config) -> i32;
+        
+        fn get_enable_sleep_syscalls(self: &Config) -> bool;
+    }
+}
+
+impl Config {
+    pub fn is_enable_sleep_syscalls(&self) -> bool {
+        self.get_enable_sleep_syscalls()
     }
 }
 

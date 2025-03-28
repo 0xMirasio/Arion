@@ -1,8 +1,8 @@
 [package]
-name = "ArionEngine"
+name = "cpuid_handler_arion"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 
-arion_engine = {path = "../../arion_engine"}
+arion_engine = {path = "../../../../"}

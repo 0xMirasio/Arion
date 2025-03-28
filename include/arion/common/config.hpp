@@ -41,10 +41,14 @@ public:
         newConfig.config_map = this->config_map;
         return newConfig;
     }
+
+    arion::ARION_LOG_LEVEL get_log_level() const {
+        return std::any_cast<arion::ARION_LOG_LEVEL>(config_map.at("log_lvl"));
+    }
+    bool get_enable_sleep_syscalls() const {
+        return std::any_cast<bool>(config_map.at("enable_sleep_syscalls"));
+    }
 };
 
-// rust bindings getter and setter
 std::unique_ptr<Config> new_config();
-arion::ARION_LOG_LEVEL get_log_level();
-
 #endif // ARION_CONFIG_HPP

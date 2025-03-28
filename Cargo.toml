@@ -8,7 +8,7 @@ build = "./build.rs"
 publish = false
 
 [lib]
-path = "bindings/src/lib.rs"
+path = "bindings/rust/src/lib.rs"
 
 [dependencies]
 libc = "0.2.171"
