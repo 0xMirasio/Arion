@@ -5,7 +5,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-SUPPORTED_ARCHS=("x86" "x86-64" "arm" "arm64")
+SUPPORTED_ARCHS=("x86" "x86-64" "arm" "arm64" "powerpc32bit")
 
 ARCH=$1
 
@@ -65,6 +65,8 @@ if [[ -d "$TOOLCHAINS_DIR" ]]; then
 fi
 mkdir -p "$TOOLCHAINS_DIR"
 
+KERNEL_ARCH="${ARCH//-/_}"
+
 case "$ARCH" in
   x86)
     GNU_ARCH="i686-linux-gnu"
@@ -77,6 +79,10 @@ case "$ARCH" in
     ;;
   arm64)
     GNU_ARCH="aarch64-linux-gnu"
+    ;;
+  powerpc32bit)
+    GNU_ARCH="powerpc-linux-gnu"
+    KERNEL_ARCH="powerpc"
     ;;
   *)
     echo "Unsupported architecture: $ARCH"
@@ -159,7 +165,7 @@ rm "linux-${KERNEL_VERSION}.tar.xz"
 KERNEL_SOURCE_DIR="$ARCH_DIR/linux-${KERNEL_VERSION}"
 cd $KERNEL_SOURCE_DIR
 echo "Installing kernel headers in rootfs..."
-make ARCH=${ARCH//-/_} INSTALL_HDR_PATH=${ROOTFS_DIR}/usr headers_install
+make ARCH=${KERNEL_ARCH} INSTALL_HDR_PATH=${ROOTFS_DIR}/usr headers_install
 rm -rf "$KERNEL_SOURCE_DIR"
 
 cd "$ARCH_DIR"
